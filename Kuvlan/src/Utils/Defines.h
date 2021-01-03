@@ -11,8 +11,8 @@
 #endif
 
 #ifdef PLATFORM_WINDOWS
-#define FORCEINLINE __forceinline;
-#define FORCENOINLINE __declspec(noinline);
+#define FORCEINLINE __forceinline
+#define FORCENOINLINE __declspec(noinline)
 #endif
 
 // Assertions
@@ -55,15 +55,14 @@
 #define ASSERT_DEBUG(expr) 
 #endif
 
-#else
-#define ASSERT(expr)
-#define ASSERT_MSG(expr, message)
-#define ASSERT_DEBUG(expr)
-#endif
-
-
 FORCEINLINE void report_assertion_failure(const char* expression, const char* message, const char* file, int line)
 {
 	std::cerr << "Assertion Failure: " << expression << ", message: '" << message << "', in file: " << file <<
 		", line: " << line << "\n";
 }
+
+#else
+#define ASSERT(expr)
+#define ASSERT_MSG(expr, message)
+#define ASSERT_DEBUG(expr)
+#endif
